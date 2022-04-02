@@ -51,4 +51,15 @@ class User < ApplicationRecord
       User.where('name LIKE ?', '%' + content + '%')
     end
   end
+  
+  
+  def avg_score
+    unless self.books.empty?
+      books.average(:rate).round(1).to_f
+    else
+      0.0
+    end
+  end 
+  
+  
 end

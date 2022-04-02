@@ -9,6 +9,29 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+
+
+    <div id="rate_avr2" class="form-group"></div>
+    <script>
+    $(document).on('turbolinks:load', function() {
+      $('#rate_avr2').empty();
+      $('#rate_avr2').raty({
+        size: 20,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @user.avg_score %>,
+      });
+    });
+    </script>
+　　<%= @user.avg_score %>点
+
+
+
+
+
     </div>
   </div>
 </div>
